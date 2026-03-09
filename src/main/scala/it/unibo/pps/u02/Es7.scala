@@ -4,20 +4,12 @@ import scala.annotation.tailrec
 
 @main
 def es7(): Unit =
-  def power(base: Double, exponent: Int): Double = exponent match
-    case 0 => 1
-    case _ => base * power(base, exponent - 1)
-
-  println(power(2, 3)) // 8.0
-  println(power(5, 2)) // 25.0
-
-  def powerTail(base: Double, exponent: Int): Double =
+  def reverseNumber(n: Int): Int =
     @tailrec
-    def _power(base: Double, exponent: Int, accumulator: Double): Double = exponent match
+    def _reverse(remaining: Int, accumulator: Int): Int = remaining match
       case 0 => accumulator
-      case _ => _power(base, exponent - 1, accumulator * base)
+      case _ => _reverse(remaining / 10, accumulator * 10 + remaining % 10)
 
-    _power(base, exponent, 1)
+    _reverse(n, 0)
 
-  println(powerTail(2, 3)) // 8.0
-  println(powerTail(5, 2)) // 25.0
+  println(reverseNumber(12345)) // 54321
