@@ -13,11 +13,15 @@ object Optionals:
 
     def isEmpty(opt: OptionalInt): Boolean = opt match
       case Empty() => true
-      case _       => false
+      case _ => false
 
     def orElse(opt: OptionalInt, orElse: Int): Int = opt match
       case Just(a) => a
-      case _       => orElse
+      case _ => orElse
+
+    def mapInt(opt: OptionalInt)(mapping: Int => Int): OptionalInt = opt match
+      case Just(a) => Just(mapping(a))
+      case Empty() => opt
 
 @main def tryOptionals(): Unit =
   import Optionals.* // to work with Optionals (to see OptionalInt type)

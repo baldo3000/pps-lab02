@@ -5,7 +5,8 @@ import org.junit.Assert.*
 import task4.Expr.*
 
 class ExprTest:
-  // NOTE: since we are doing FP, I'm not treating these values as static fields, hence they are public and their names are in camel-case
+  // NOTE: since we are doing FP, I'm not treating these values as static fields, hence they are public and their names are in camel-case.
+  // The only reason they are here is for reusing code.
   val firstValue = 2
   val secondValue = 3
   val firstLiteral = Literal(firstValue)
