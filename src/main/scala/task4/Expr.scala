@@ -10,3 +10,8 @@ object Expr:
     case Literal(n) => n
     case Add(first, second) => evaluate(first) + evaluate(second)
     case Multiply(first, second) => evaluate(first) * evaluate(second)
+
+  def show(expr: Expr): String = expr match
+    case Literal(n) => n.toString
+    case Add(first, second) => s"(${show(first)} + ${show(second)})"
+    case Multiply(first, second) => s"(${show(first)} * ${show(second)})"
