@@ -1,4 +1,4 @@
-package it.unibo.pps.u02.task2
+package task2
 
 val positiveLambda = (x: Int) => x match
   case n if n >= 0 => "positive"

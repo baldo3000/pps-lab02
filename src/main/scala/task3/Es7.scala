@@ -1,4 +1,4 @@
-package it.unibo.pps.u02.task3
+package task3
 
 import scala.annotation.tailrec
 
