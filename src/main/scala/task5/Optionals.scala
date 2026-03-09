@@ -23,8 +23,12 @@ object Optionals:
       case Just(a) => Just(mapping(a))
       case Empty() => opt
 
+    def filter(opt: OptionalInt)(filterFunction: Int => Boolean): OptionalInt = opt match
+      case Just(a) if filterFunction(a) => opt
+      case _ => Empty()
+
 @main def tryOptionals(): Unit =
-  import Optionals.* // to work with Optionals (to see OptionalInt type)
+  import Optionals.*
   import OptionalInt.* // to directly access algorithms
 
   val s1: OptionalInt = Just(1)

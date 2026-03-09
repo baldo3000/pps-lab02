@@ -3,7 +3,7 @@ package task5
 import org.junit.*
 import org.junit.Assert.*
 import task5.Optionals.*
-import task5.Optionals.OptionalInt.mapInt
+import task5.Optionals.OptionalInt.*
 
 class OptionalIntTest:
   @Test
@@ -36,3 +36,19 @@ class OptionalIntTest:
     val nonEmpty = OptionalInt.Just(0)
     val expected = OptionalInt.Just(5)
     assertEquals(expected, mapInt(nonEmpty)(_ + 5))
+
+  @Test
+  def testFilterShouldReturnEmptyWhenEmpty(): Unit =
+    val empty = OptionalInt.Empty()
+    assertEquals(empty, filter(empty)(_ > 2))
+
+  @Test
+  def testFilterShouldReturnOptionalWhenConditionIsSatisfiedAndNonEmpty(): Unit =
+    val nonEmpty = OptionalInt.Just(5)
+    assertEquals(nonEmpty, filter(nonEmpty)(_ > 2))
+
+  @Test
+  def testFilterShouldReturnEmptyWhenConditionIsNotSatisfiedAndNonEmpty(): Unit =
+    val nonEmpty = OptionalInt.Just(5)
+    val expected = OptionalInt.Empty()
+    assertEquals(expected, filter(nonEmpty)(_ > 8))
